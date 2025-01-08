@@ -3,49 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>给最特别的你</title>
+    <title>给你</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
+        /* 背景样式 */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             text-align: center;
-            background-color: #f9f9f9;
+            background: url('./image/background.jpg') no-repeat center center fixed;
+            background-size: cover;
             margin: 0;
             padding: 0;
+            color: #333;
+            line-height: 1.6;
         }
+        /* 卡片样式 */
         .container {
             max-width: 600px;
             margin: 50px auto;
-            background: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            overflow: hidden;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
         }
         .header {
-            background-color: #f2a2a2;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #f2a2a2, #f28b8b);
             color: white;
             padding: 20px;
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 15px 15px 0 0;
         }
         .content {
             padding: 20px;
-            color: #333;
         }
-        img {
+        .carousel {
+            position: relative;
             max-width: 100%;
+            height: 300px;
+            overflow: hidden;
             border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
-        .footer {
+        .carousel img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+        /* 按钮样式 */
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            pointer-events: auto;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        /* 按钮样式 */
+        .audio-button {
             margin-top: 20px;
-            color: #888;
-            font-size: 14px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .audio-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .audio-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <audio autoplay loop muted>
-        <source src="./duoyuan.mp3" type="audio/mpeg">
-        你的浏览器不支持音频播放。
-    </audio>
     <div class="container">
         <div class="header">
             飞飞~：
@@ -53,14 +124,60 @@
         <div class="content">
             <p>嘿！</p>
             <p>这是送给你的玩具熊，除了它之外，还有一些想对你说的话～</p>
-            <img src="https://via.placeholder.com/400x300" alt="玩具熊图片">
-            <p>你让我觉得世界更美好，希望这个熊能为你带来一些幸福。</p>
+
+            <!-- 图片轮播 -->
+            <div class="carousel">
+                <img src="https://via.placeholder.com/400x300?text=1" alt="照片1" class="active">
+                <img src="https://via.placeholder.com/400x300?text=2" alt="照片2">
+                <img src="https://via.placeholder.com/400x300?text=3" alt="照片3">
+                <img src="https://via.placeholder.com/400x300?text=4" alt="照片4">
+                <div class="carousel-buttons">
+                    <button onclick="prevImage()">&#8249;</button>
+                    <button onclick="nextImage()">&#8250;</button>
+                </div>
+            </div>
+
+            <p>你让我觉得世界美好呀，希望可爱的卡皮巴拉也能为你带来一些幸福~</p>
             <p>记得，无论什么时候都有人在关心你，陪伴你。</p>
             <p style="font-weight: bold;">“希望未来每一天，你都能保持今晚的开心和笑容！”</p>
-        </div>
-        <div class="footer">
-            <p></p>
+            <p>别太辛苦了，早点休息，晚安好梦~</p>
+            <button class="audio-button" onclick="playAudio()">想听歌点我哈哈</button>
         </div>
     </div>
+
+    <audio id="audio">
+        <source src="duoyuan.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放。
+    </audio>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        function playAudio() {
+            const audio = document.getElementById('audio');
+            audio.play().then(() => {
+                console.log('音频播放成功！');
+            }).catch(error => {
+                console.error('音频播放失败:', error);
+            });
+        }
+    </script>
 </body>
 </html>
