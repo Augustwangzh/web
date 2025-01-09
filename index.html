@@ -42,9 +42,11 @@
             max-width: 600px;
             margin: 50px auto;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.8); /* 半透明背景 */
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px); /* 模糊效果 */
+            -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
             animation: fadeIn 1.5s ease-in-out;
         }
         .header {
