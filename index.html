@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>给你</title>
+    <title>给最特别的你</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('/fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype'); 
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            src: url('/fonts/Roboto/static/Roboto-Italic.ttf') format('truetype'); 
+            font-weight: normal;
+            font-style: normal;
+        }  
         /* 背景样式 */
         body {
             font-family: 'Roboto', Arial, sans-serif;
             text-align: center;
-            background: url('image/background.jpg') no-repeat center center fixed;
+            background: url('./image/background.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -101,6 +114,11 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
+        .audio-button {
+        display: block; /* 确保按钮独占一行 */
+        margin: 0 auto 20px auto; /* 下方添加 20px 间隔 */
+        padding: 10px 20px; /* 内部间距，增加按钮大小 */
+        }
         .audio-button:active {
             transform: translateY(2px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -118,6 +136,7 @@
 </head>
 <body>
     <div class="container">
+        <button class="audio-button" onclick="playAudio()">点我可以听歌哈哈</button>
         <div class="header">
             飞飞~：
         </div>
@@ -142,7 +161,6 @@
             <p style="font-weight: bold;">“希望未来每一天，你都能保持今晚的开心和笑容！”</p>
             <p>别太辛苦了，早点休息，晚安好梦~</p>
             <p>PS：大二以后就没写过网页了哈哈，自己写发现当TA时候对学生有点严格了哈哈</p>
-            <button class="audio-button" onclick="playAudio()">想听歌点我哈哈</button>
         </div>
     </div>
 
