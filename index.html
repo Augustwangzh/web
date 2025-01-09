@@ -6,22 +6,29 @@
     <title>给最特别的你</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
-        @font-face {
+        /* @font-face {
             font-family: 'Montserrat';
-            src: url('/fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype'); 
+            src: url('./fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype'); 
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Roboto';
-            src: url('/fonts/Roboto/static/Roboto-Italic.ttf') format('truetype'); 
+            src: url('./fonts/Roboto/static/Roboto-Italic.ttf') format('truetype'); 
             font-weight: normal;
             font-style: normal;
-        }  
+        }   */
+
+        @font-face {
+            font-family: 'MFHaiDaoShaoNian'; /* 字体名称，可自定义 */
+            src: url('./fonts/MFKeSong_Noncommercial-Regular.otf/MFKeSong_Noncommercial-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
         /* 背景样式 */
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'MFHaiDaoShaoNian', Arial, sans-serif;
             text-align: center;
             background: url('./image/background.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -41,17 +48,21 @@
             animation: fadeIn 1.5s ease-in-out;
         }
         .header {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'MFHaiDaoShaoNian', sans-serif;
             background: linear-gradient(45deg, #f2a2a2, #f28b8b);
             color: white;
             padding: 20px;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             letter-spacing: 1px;
             border-radius: 15px 15px 0 0;
         }
-        .content {
-            padding: 20px;
+
+        .content p {
+            font-family: 'MFHaiDaoShaoNian', Arial, sans-serif;
+            font-size: 22px; /* 修改后的正文字体大小 */
+            margin: 15px 0; /* 调整段落间距 */
+            line-height: 1.8; /* 增加行高，提高可读性 */
         }
         .carousel {
             position: relative;
