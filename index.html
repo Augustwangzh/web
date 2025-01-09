@@ -65,19 +65,22 @@
             line-height: 1.8; /* 增加行高，提高可读性 */
         }
         .carousel {
-            position: relative;
-            max-width: 100%;
-            height: 300px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-        .carousel img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: none;
-        }
+    position: relative;
+    max-width: 500px; /* 设置容器最大宽度 */
+    aspect-ratio: 1 / 1; /* 确保容器为正方形 */
+    margin: 0 auto; /* 居中显示 */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: #fff; /* 背景色，用于填补空白 */
+}
+
+.carousel img {
+    width: 100%; /* 图片宽度适配容器 */
+    height: 100%; /* 图片高度适配容器 */
+    object-fit: contain; /* 确保完整显示图片，不裁剪 */
+    border-radius: 10px;
+}
         .carousel img.active {
             display: block;
             animation: fadeIn 1s ease-in-out;
@@ -157,10 +160,11 @@
 
             <!-- 图片轮播 -->
             <div class="carousel">
-                <img src="https://via.placeholder.com/400x300?text=1" alt="照片1" class="active">
-                <img src="https://via.placeholder.com/400x300?text=2" alt="照片2">
-                <img src="https://via.placeholder.com/400x300?text=3" alt="照片3">
-                <img src="https://via.placeholder.com/400x300?text=4" alt="照片4">
+                <img src="./image/tennis.png" alt="照片1" class="active">
+                <img src="./image/badminton.png" alt="照片2">
+                <img src="./image/ktv.png" alt="照片3">
+                <img src="./image/brunch.png" alt="照片4">
+                <img src="./image/work.png" alt="照片5">
                 <div class="carousel-buttons">
                     <button onclick="prevImage()">&#8249;</button>
                     <button onclick="nextImage()">&#8250;</button>
@@ -181,24 +185,27 @@
     </audio>
 
     <script>
-        let currentIndex = 0;
-        const images = document.querySelectorAll('.carousel img');
+        let currentIndex = 0; // 当前显示的图片索引
+        const images = document.querySelectorAll('.carousel img'); // 获取所有图片
 
         function showImage(index) {
             images.forEach((img, i) => {
-                img.classList.toggle('active', i === index);
+                img.style.display = i === index ? 'block' : 'none'; // 显示当前图片，隐藏其他图片
             });
         }
 
         function prevImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            showImage(currentIndex);
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // 切换到上一张图片
+            showImage(currentIndex); // 更新显示
         }
 
         function nextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(currentIndex);
+            currentIndex = (currentIndex + 1) % images.length; // 切换到下一张图片
+            showImage(currentIndex); // 更新显示
         }
+
+        // 初始化，显示第一张图片
+        showImage(currentIndex);
 
         function playAudio() {
             const audio = document.getElementById('audio');
